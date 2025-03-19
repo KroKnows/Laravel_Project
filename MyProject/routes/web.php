@@ -19,12 +19,19 @@ Route::get('/', function () {
 })->name('home');
 
 
-// Inventory Page Route
-Route::get('/inventory', [InventoryController::class, 'index'])->name('inventory');
-
 // Protected Routes (Only authenticated users can access)
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard'); // You can create a dashboard.blade.php for this
     })->name('dashboard');
 });
+
+Route::resource('inventory', InventoryController::class);
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
+
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');

@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('inventories', function (Blueprint $table) {
             $table->id();
-            $table->string('name'); // Product name
-            $table->string('category'); // Product category
-            $table->integer('stock'); // Stock count
-            $table->decimal('price', 8, 2); // Price with 2 decimal places
-            $table->timestamps(); // Created at & updated at
+            $table->string('item_name'); // Change 'name' to 'item_name'
+            $table->unsignedBigInteger('category_id'); // Change 'category' to 'category_id'
+            $table->integer('qty'); // Change 'stock' to 'qty'
+            $table->decimal('price', 8, 2);
+            $table->timestamps();
         });
     }
 
@@ -29,3 +29,4 @@ return new class extends Migration
         Schema::dropIfExists('inventories');
     }
 };
+
