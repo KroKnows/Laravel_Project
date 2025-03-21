@@ -1,6 +1,6 @@
 @extends('template.main')
 
-@section('title', 'Inventory')
+@section('title', 'Categories')
 
 @section('content')
     <div class="container">
@@ -8,27 +8,21 @@
             <div class="col-lg-8">
                 <div class="card">
                     <div class="card-header text-center">
-                        Inventory List
+                        Categories List
                     </div>
                     <div class="card-body">
                         <table class="table table-hover text-center">
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Item Name</th>
-                                    <th>Category</th>
-                                    <th>Stock</th>
-                                    <th>Price</th>
+                                    <th>Category Name</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($inventory as $item)
+                                @foreach($categories as $category)
                                     <tr>
-                                        <td class="fw-bold">{{ $item->id }}</td>
-                                        <td>{{ $item->item_name }}</td>
-                                        <td>{{ $item->category->name }}</td>
-                                        <td>{{ $item->qty }}</td>
-                                        <td>₱{{ number_format($item->price, 2) }}</td>
+                                        <td class="fw-bold">{{ $category->id }}</td>
+                                        <td>{{ $category->name }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -39,6 +33,3 @@
         </div>
     </div>
 @endsection
-
-<td>{{ $item->category->name ?? 'No Category' }}</td>
-
